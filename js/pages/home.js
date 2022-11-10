@@ -1,5 +1,9 @@
 // IMPORTS
 import renderHobbies from '../components/hobbies.js';
+import Gallery from '../components/Gallery.js';
+
+const portfolioGallery = new Gallery();
+console.log(portfolioGallery.render());
 
 // EXECUTION
 (async () => {
@@ -53,6 +57,13 @@ import renderHobbies from '../components/hobbies.js';
     /* EXPERTISE-end */
 
     /* PORTFOLIO-start */
+    try {
+        const response = await fetch('./data/portfolio.json');
+        const data = await response.json();
+        console.log(data);
+    } catch (error) {
+
+    }
     /* PORTFOLIO-end */
 
     /* TESTIMONIALS-start */
@@ -66,5 +77,4 @@ import renderHobbies from '../components/hobbies.js';
 
     /* FOOTER-start */
     /* FOOTER-end */
-
 })();
