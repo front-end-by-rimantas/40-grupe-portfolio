@@ -2,59 +2,69 @@
 import renderHobbies from '../components/hobbies.js';
 
 // EXECUTION
+(async () => {
 
-/* HEADER-start */
-/* HEADER-end */
+    /* HEADER-start */
+    /* HEADER-end */
 
-/* HERO-start */
-/* HERO-end */
+    /* HERO-start */
+    /* HERO-end */
 
-/* ABOUT-ME-start */
-/* ABOUT-ME-end */
+    /* ABOUT-ME-start */
+    /* ABOUT-ME-end */
 
-/* HOBBIES-start */
-const hobbiesResponse = renderHobbies('hobbies', [
-    { icon: 'globe', text: 'Developing' },
-    { icon: 'globe', text: 'Mac OS' },
-    { icon: 'globe', text: 'Cinema' },
-    { icon: 'globe', text: 'Coffee' },
-    { icon: 'globe', text: 'Music' },
-    { icon: 'globe', text: 'Games' },
-    { icon: 'globe', text: 'Designing' },
-    { icon: 'globe', text: 'Sports' },
-    { icon: 'globe', text: 'Painting' },
-    { icon: 'globe', text: 'Reading' },
-    { icon: 'globe', text: 'Android' },
-    { icon: 'globe', text: 'Other Activity' },
-]);
-if (hobbiesResponse[0]) {
-    console.error(hobbiesResponse[1]);
-}
-/* HOBBIES-end */
+    /* HOBBIES-start */
 
-/* ACHIEVEMENTS-start */
-/* ACHIEVEMENTS-end */
+    // fetch('./data/hobbies.json')
+    //     .then((data) => data.json())
+    //     .then((data) => {
+    //         const hobbiesResponse = renderHobbies('hobbies', data);
+    //         if (hobbiesResponse[0]) {
+    //             console.error(hobbiesResponse[1]);
+    //         }
+    //     })
+    //     .catch((error) => {
+    //         console.log(error);
+    //     });
 
-/* SERVICES-start */
-/* SERVICES-end */
+    // async/await
+    try {
+        const response = await fetch('./data/hobbies.json');
+        const data = await response.json();
+        const hobbiesResponse = renderHobbies('hobbies', data);
+        if (hobbiesResponse[0]) {
+            console.error(hobbiesResponse[1]);
+        }
+    } catch (error) {
+        console.log(error);
+    }
+    /* HOBBIES-end */
 
-/* WORK-start */
-/* WORK-end */
+    /* ACHIEVEMENTS-start */
+    /* ACHIEVEMENTS-end */
 
-/* EXPERTISE-start */
-/* EXPERTISE-end */
+    /* SERVICES-start */
+    /* SERVICES-end */
 
-/* PORTFOLIO-start */
-/* PORTFOLIO-end */
+    /* WORK-start */
+    /* WORK-end */
 
-/* TESTIMONIALS-start */
-/* TESTIMONIALS-end */
+    /* EXPERTISE-start */
+    /* EXPERTISE-end */
 
-/* HIRE-ME-start */
-/* HIRE-ME-end */
+    /* PORTFOLIO-start */
+    /* PORTFOLIO-end */
 
-/* CONTACTS-start */
-/* CONTACTS-end */
+    /* TESTIMONIALS-start */
+    /* TESTIMONIALS-end */
 
-/* FOOTER-start */
-/* FOOTER-end */
+    /* HIRE-ME-start */
+    /* HIRE-ME-end */
+
+    /* CONTACTS-start */
+    /* CONTACTS-end */
+
+    /* FOOTER-start */
+    /* FOOTER-end */
+
+})();
