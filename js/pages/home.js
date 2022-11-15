@@ -53,13 +53,9 @@ import Gallery from '../components/Gallery.js';
     /* EXPERTISE-end */
 
     /* PORTFOLIO-start */
-    try {
-        const response = await fetch('./data/portfolio.json');
-        const data = await response.json();
-        console.log(data);
-    } catch (error) {
-        console.log(error);
-    }
+
+    new Gallery('#portfolio', './data/portfolio.json');
+
     /* PORTFOLIO-end */
 
     /* TESTIMONIALS-start */
