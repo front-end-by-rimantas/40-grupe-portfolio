@@ -2,12 +2,8 @@
 import renderHobbies from '../components/hobbies.js';
 import Gallery from '../components/Gallery.js';
 
-const portfolioGallery = new Gallery();
-console.log(portfolioGallery.render());
-
 // EXECUTION
 (async () => {
-
     /* HEADER-start */
     /* HEADER-end */
 
@@ -62,7 +58,7 @@ console.log(portfolioGallery.render());
         const data = await response.json();
         console.log(data);
     } catch (error) {
-
+        console.log(error);
     }
     /* PORTFOLIO-end */
 
