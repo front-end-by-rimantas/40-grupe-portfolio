@@ -3,8 +3,11 @@ class Gallery {
         this.selector = selector || '';
         this.dataURL = dataURL || '';
         this.DOM = null;
+        this.filterOrder = 'initial';
+        this.listOrder = 'initial';
         this.data = [];
         this.filteredData = [];
+        this.filterTags = null;
 
         this.init();
     }
@@ -18,6 +21,9 @@ class Gallery {
         }
 
         this.filterData();
+        this.collectFilterTags();
+        // this.orderFilterTags();
+        // this.orderFilteredData();
         this.render();
     }
 
@@ -38,55 +44,21 @@ class Gallery {
             console.log(error);
             this.data = [];
         }
-        return Array.isArray(this.data);
+        return typeof this.data === 'object';
     }
 
     filterData() {
-        for (const item of this.data) {
+        for (const item of this.data.dataList) {
             if (item.draft) {
                 continue;
             }
+            const allowedKeys = ['img', 'title', 'tags', 'draft'];
             this.filteredData.push(item);
         }
     }
 
-    // filterHTML() {
-    //     const uniqueTags = new Set();
-    //     let HTML = '';
-
-    //     for (const item of this.data) {
-    //         for (const tag of item.tags) {
-    //             uniqueTags.add(tag);
-    //         }
-    //     }
-
-    //     for (const tag of uniqueTags) {
-    //         HTML += `<div class="tag">${tag}</div>`;
-    //     }
-
-    //     return HTML;
-    // }
-
-    // filterHTML() {
-    //     const uniqueTags = [];
-    //     let HTML = '';
-
-    //     for (const item of this.data) {
-    //         for (const tag of item.tags) {
-    //             if (uniqueTags.includes(tag)) {
-    //                 continue;
-    //             }
-    //             uniqueTags.push(tag);
-    //             HTML += `<div class="tag">${tag}</div>`;
-    //         }
-    //     }
-
-    //     return HTML;
-    // }
-
-    filterHTML() {
+    collectFilterTags() {
         const uniqueTags = {};
-        let HTML = '';
 
         for (const item of this.filteredData) {
             for (const tag of item.tags) {
@@ -94,11 +66,18 @@ class Gallery {
                     uniqueTags[tag]++;
                 } else {
                     uniqueTags[tag] = 1;
-                    HTML += `<div class="tag">${tag}</div>`;
                 }
             }
         }
 
+        return (this.filterTags = uniqueTags);
+    }
+
+    filterHTML() {
+        let HTML = '';
+        for (const tag in this.filterTags) {
+            HTML += `<div class="tag">${tag}</div>`;
+        }
         return HTML;
     }
 
@@ -106,7 +85,7 @@ class Gallery {
         let HTML = '';
         for (const item of this.filteredData) {
             HTML += `<div class="card">
-                        <img src="./img/portfolio/${item.img}">
+                        <img src="${this.data.imgFolder + item.img}">
                         <div>
                             <div>${item.title}</div>
                             <div>${item.tags[0]}</div>
@@ -126,3 +105,37 @@ class Gallery {
 }
 
 export default Gallery;
+
+// filterHTML() {
+//     const uniqueTags = new Set();
+//     let HTML = '';
+
+//     for (const item of this.data) {
+//         for (const tag of item.tags) {
+//             uniqueTags.add(tag);
+//         }
+//     }
+
+//     for (const tag of uniqueTags) {
+//         HTML += `<div class="tag">${tag}</div>`;
+//     }
+
+//     return HTML;
+// }
+
+// filterHTML() {
+//     const uniqueTags = [];
+//     let HTML = '';
+
+//     for (const item of this.data) {
+//         for (const tag of item.tags) {
+//             if (uniqueTags.includes(tag)) {
+//                 continue;
+//             }
+//             uniqueTags.push(tag);
+//             HTML += `<div class="tag">${tag}</div>`;
+//         }
+//     }
+
+//     return HTML;
+// }
