@@ -2,31 +2,58 @@
     {
         "img": "1.jpg",
         "title": "Working Keyboard",
-        "tags": ["Tech"]
+        "tags": ["Tech"],
+        "draft": false,
+        "publishFrom": "2022-11-11",
+        "publishUntil": "2023-01-01",
+        "paid": true
     },
     {
         "img": "2.jpg",
         "title": "The Micro Headphones",
-        "tags": ["Tech", "Nature"]
+        "tags": ["Tech", "Nature"],
+        "draft": false
+    },
+    {
+        "img": "8.jpg",
+        "title": "Green potato",
+        "tags": ["Nature", "Plant"],
+        "draft": true
     },
     {
         "img": "3.jpg",
         "title": "The Coffee Cup",
-        "tags": ["Cup"]
+        "tags": ["Cup"],
+        "draft": false
     },
     {
         "img": "4.jpg",
         "title": "The Wooden Desk",
-        "tags": ["Nature", "Table"]
+        "tags": ["Nature", "Table"],
+        "draft": false
+    },
+    {
+        "img": "9.jpg",
+        "title": "Corner",
+        "tags": ["Table", "Chair"],
+        "draft": true
     },
     {
         "img": "5.jpg",
         "title": "Camera",
-        "tags": ["Tech", "Table"]
+        "tags": ["Tech", "Table"],
+        "draft": false
     },
     {
         "img": "6.jpg",
         "title": "Branded Laptop",
-        "tags": ["Tech", "Nature", "Cup"]
+        "tags": ["Tech", "Nature", "Cup"],
+        "draft": false
+    },
+    {
+        "img": "7.jpg",
+        "title": "Kitchen",
+        "tags": ["Table", "Cup"],
+        "draft": true
     }
 ]

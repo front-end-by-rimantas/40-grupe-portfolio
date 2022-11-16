@@ -4,6 +4,7 @@ class Gallery {
         this.dataURL = dataURL || '';
         this.DOM = null;
         this.data = [];
+        this.filteredData = [];
 
         this.init();
     }
@@ -16,6 +17,7 @@ class Gallery {
             return;
         }
 
+        this.filterData();
         this.render();
     }
 
@@ -39,22 +41,77 @@ class Gallery {
         return Array.isArray(this.data);
     }
 
+    filterData() {
+        for (const item of this.data) {
+            if (item.draft) {
+                continue;
+            }
+            this.filteredData.push(item);
+        }
+    }
+
+    // filterHTML() {
+    //     const uniqueTags = new Set();
+    //     let HTML = '';
+
+    //     for (const item of this.data) {
+    //         for (const tag of item.tags) {
+    //             uniqueTags.add(tag);
+    //         }
+    //     }
+
+    //     for (const tag of uniqueTags) {
+    //         HTML += `<div class="tag">${tag}</div>`;
+    //     }
+
+    //     return HTML;
+    // }
+
+    // filterHTML() {
+    //     const uniqueTags = [];
+    //     let HTML = '';
+
+    //     for (const item of this.data) {
+    //         for (const tag of item.tags) {
+    //             if (uniqueTags.includes(tag)) {
+    //                 continue;
+    //             }
+    //             uniqueTags.push(tag);
+    //             HTML += `<div class="tag">${tag}</div>`;
+    //         }
+    //     }
+
+    //     return HTML;
+    // }
+
     filterHTML() {
+        const uniqueTags = {};
         let HTML = '';
+
+        for (const item of this.filteredData) {
+            for (const tag of item.tags) {
+                if (uniqueTags[tag]) {
+                    uniqueTags[tag]++;
+                } else {
+                    uniqueTags[tag] = 1;
+                    HTML += `<div class="tag">${tag}</div>`;
+                }
+            }
+        }
 
         return HTML;
     }
 
     contentHTML() {
         let HTML = '';
-        for (const item of this.data) {
+        for (const item of this.filteredData) {
             HTML += `<div class="card">
-                                <img src="./img/portfolio/${item.img}">
-                                <div>
-                                    <div>${item.title}</div>
-                                    <div>${item.tags[0]}</div>
-                                </div>
-                            </div>`;
+                        <img src="./img/portfolio/${item.img}">
+                        <div>
+                            <div>${item.title}</div>
+                            <div>${item.tags[0]}</div>
+                        </div>
+                    </div>`;
         }
         return HTML;
     }
