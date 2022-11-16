@@ -1,31 +1,31 @@
 [
     {
-        "img": "1.png",
+        "img": "1.jpg",
         "title": "Working Keyboard",
         "tags": ["Tech"]
     },
     {
-        "img": "2.png",
+        "img": "2.jpg",
         "title": "The Micro Headphones",
         "tags": ["Tech", "Nature"]
     },
     {
-        "img": "3.png",
+        "img": "3.jpg",
         "title": "The Coffee Cup",
         "tags": ["Cup"]
     },
     {
-        "img": "4.png",
+        "img": "4.jpg",
         "title": "The Wooden Desk",
         "tags": ["Nature", "Table"]
     },
     {
-        "img": "5.png",
+        "img": "5.jpg",
         "title": "Camera",
         "tags": ["Tech", "Table"]
     },
     {
-        "img": "6.png",
+        "img": "6.jpg",
         "title": "Branded Laptop",
         "tags": ["Tech", "Nature", "Cup"]
     }

@@ -18,13 +18,13 @@
 @media (min-width: 700px) {
     .gallery {
         --cols: 2;
-        --gap: 40px;
+        --gap: 25px;
     }
 }
 
 @media (min-width: 1100px) {
     .gallery {
         --cols: 3;
-        --gap: 80px;
+        --gap: 30px;
     }
 }
